@@ -15,6 +15,8 @@
 		0D0DBDCB1FCFE6BB0098AADE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DBDC91FCFE6BB0098AADE /* LaunchScreen.storyboard */; };
 		0D0DBDD61FCFE6BC0098AADE /* HelloJWPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0DBDD51FCFE6BC0098AADE /* HelloJWPlayerTests.m */; };
 		0D0DBDE11FCFE6BC0098AADE /* HelloJWPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0DBDE01FCFE6BC0098AADE /* HelloJWPlayerUITests.m */; };
+		0D0DBDF01FCFEA150098AADE /* JWPlayer-iOS-SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0DBDEF1FCFEA150098AADE /* JWPlayer-iOS-SDK.framework */; };
+		0D0DBDF31FCFEFA40098AADE /* JWPLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0DBDF21FCFEFA40098AADE /* JWPLayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		0D0DBDDC1FCFE6BC0098AADE /* HelloJWPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloJWPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D0DBDE01FCFE6BC0098AADE /* HelloJWPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloJWPlayerUITests.m; sourceTree = "<group>"; };
 		0D0DBDE21FCFE6BC0098AADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D0DBDEF1FCFEA150098AADE /* JWPlayer-iOS-SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "JWPlayer-iOS-SDK.framework"; sourceTree = "<group>"; };
+		0D0DBDF11FCFEFA40098AADE /* JWPLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWPLayerViewController.h; sourceTree = "<group>"; };
+		0D0DBDF21FCFEFA40098AADE /* JWPLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWPLayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0DBDF01FCFEA150098AADE /* JWPlayer-iOS-SDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +91,7 @@
 				0D0DBDD41FCFE6BC0098AADE /* HelloJWPlayerTests */,
 				0D0DBDDF1FCFE6BC0098AADE /* HelloJWPlayerUITests */,
 				0D0DBDB91FCFE6BB0098AADE /* Products */,
+				0D0DBDEE1FCFEA140098AADE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +117,8 @@
 				0D0DBDC91FCFE6BB0098AADE /* LaunchScreen.storyboard */,
 				0D0DBDCC1FCFE6BB0098AADE /* Info.plist */,
 				0D0DBDBB1FCFE6BB0098AADE /* Supporting Files */,
+				0D0DBDF11FCFEFA40098AADE /* JWPLayerViewController.h */,
+				0D0DBDF21FCFEFA40098AADE /* JWPLayerViewController.m */,
 			);
 			path = HelloJWPlayer;
 			sourceTree = "<group>";
@@ -138,6 +147,14 @@
 				0D0DBDE21FCFE6BC0098AADE /* Info.plist */,
 			);
 			path = HelloJWPlayerUITests;
+			sourceTree = "<group>";
+		};
+		0D0DBDEE1FCFEA140098AADE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D0DBDEF1FCFEA150098AADE /* JWPlayer-iOS-SDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +224,7 @@
 				TargetAttributes = {
 					0D0DBDB71FCFE6BB0098AADE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJ436JCWU2;
 						ProvisioningStyle = Automatic;
 					};
 					0D0DBDD01FCFE6BC0098AADE = {
@@ -273,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0DBDF31FCFEFA40098AADE /* JWPLayerViewController.m in Sources */,
 				0D0DBDC31FCFE6BB0098AADE /* ViewController.m in Sources */,
 				0D0DBDC01FCFE6BB0098AADE /* AppDelegate.m in Sources */,
 				0D0DBDBD1FCFE6BB0098AADE /* main.m in Sources */,
@@ -424,8 +443,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GJ436JCWU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HelloJWPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = supersoccer.tv.sampleJWPlayer.HelloJWPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -435,8 +460,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GJ436JCWU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HelloJWPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = supersoccer.tv.sampleJWPlayer.HelloJWPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
