@@ -69,7 +69,7 @@
 }
 
 - (IBAction)viewJWPlayerButton:(UIButton *)sender {
-    [self createPopulatePlayer];
+    [self createPopulatePlayer:@"https://origin-supersoccer-b-01.vos360.video/Content/HLS/VOD/daf82114-e53e-4e52-9701-e61457f525ca/68fb97dc-8666-635a-5742-c1ccce4088de/index.m3u8" andTitle:@"VOD video sample"];
 
 }
 
@@ -83,10 +83,10 @@
  }
  */
 
-- (void)createPopulatePlayer
+- (void)createPopulatePlayer:(NSString *)url andTitle:(NSString *)title
 {
     JWConfig *config = [JWConfig new];
-    config.file = @"https://origin-supersoccer-b-01.vos360.video/Content/HLS/VOD/daf82114-e53e-4e52-9701-e61457f525ca/68fb97dc-8666-635a-5742-c1ccce4088de/index.m3u8";
+    config.file = url;
     config.controls = YES;
     
     self.player = [[JWPlayerController alloc] initWithConfig:config];
@@ -101,10 +101,15 @@
     [self.btnBack addTarget:self
                      action:@selector(fncBackTapped:)
            forControlEvents:UIControlEventTouchUpInside];
-    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 30)];
     
-    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:@"karthik"];
-     [navbar setBarTintColor:[UIColor lightGrayColor]];
+    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:title];
+    [navbar setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.1]];
+//    [navbar setBarTintColor:[UIColor colorWithRed:0.50f
+//                                            green:0.50f
+//                                             blue:0.50f
+//                                            alpha:0.05f]];
+    
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(fncBackTapped:)];
     navItem.leftBarButtonItem = cancelBtn;
     
@@ -130,7 +135,10 @@
     [self.player stop];
     [self.player exitFullScreen];
     [self.player.view setHidden:true];
+    [self.player.view removeFromSuperview];
+    self.player = nil;
     [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    
     
 //    [self deinitJWPlayer];
 }

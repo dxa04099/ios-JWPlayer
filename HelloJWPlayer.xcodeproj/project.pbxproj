@@ -538,6 +538,7 @@
 				0D0DBDE71FCFE6BC0098AADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D0DBDE81FCFE6BC0098AADE /* Build configuration list for PBXNativeTarget "HelloJWPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +547,7 @@
 				0D0DBDEA1FCFE6BC0098AADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D0DBDEB1FCFE6BC0098AADE /* Build configuration list for PBXNativeTarget "HelloJWPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +556,7 @@
 				0D0DBDED1FCFE6BC0098AADE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
