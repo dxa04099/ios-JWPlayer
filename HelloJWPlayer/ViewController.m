@@ -44,7 +44,9 @@
 
 @property (nonatomic) JWPlayerController *player;
 @property (nonatomic) UIButton *btnBack;
+@property (nonatomic) UIView *v;
 @property (weak, nonatomic) IBOutlet UIButton *playJWPlayer;
+
 
 @end
 
@@ -123,15 +125,17 @@
 //
 //    [navbar setItems:@[navItem]];
     
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 44)];
-    v.backgroundColor = [UIColor blackColor];
-    v.alpha = 0.5;
-    [v  addSubview:self.btnBack];
+    self.v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 44)];
+    self.v.backgroundColor = [UIColor blackColor];
+    self.v.alpha = 0.5;
+    [self.v  addSubview:self.btnBack];
     
-    [self.player.view addSubview:v];
+    [self.player.view addSubview:self.v];
     
     
     self.player.delegate = self;
+    
+    
     
     //    self.player.openSafariOnAdClick = YES;
     self.player.forceFullScreenOnLandscape = YES;
@@ -158,6 +162,16 @@
         self.btnBack = nil;
         [self.player.view removeFromSuperview];
         self.player = nil;
+    }
+}
+
+- (void)onControlBarVisible:(BOOL)isVisible
+{
+    if(isVisible){
+        [self.v setHidden:false];
+    }else{
+        
+        [self.v setHidden:true];
     }
 }
 
