@@ -60,8 +60,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 //    [super viewWillAppear:animated];
-//    [self createPopulatePlayer];
-//    [self.view addSubview:self.player.view];
+    [self createPopulatePlayer:@"https://origin-supersoccer-b-01.vos360.video/Content/HLS/VOD/daf82114-e53e-4e52-9701-e61457f525ca/68fb97dc-8666-635a-5742-c1ccce4088de/index.m3u8" andTitle:@"VOD video sample"];
+    [self.view addSubview:self.player.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,36 +131,42 @@
     self.v.alpha = 0.5;
     
     [self.v addSubview:self.btnBack];
-    
+    [self.v setHidden:true];
     [self.player.view addSubview:self.v];
     
     
     self.player.delegate = self;
     
+    CGRect frame = self.view.bounds;
+    frame.origin.y = 64;
+    frame.size.height /= 2;
+    frame.size.height -= 44 + 64;
+    self.player.view.frame = frame;
+    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
     
-//    self.player.openSafariOnAdClick = YES;
+    self.player.openSafariOnAdClick = YES;
     self.player.forceFullScreenOnLandscape = YES;
     self.player.forceLandscapeOnFullScreen = YES;
-    self.player.enterFullScreen;
+//    self.player.enterFullScreen;
     
 }
 
 -(void) fncBackTapped:(UIButton*)sender
 {
-    [self.player stop];
+//    [self.player stop];
     [self.player exitFullScreen];
-    [self.player.view setHidden:true];
+//    [self.player.view setHidden:true];
     [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
     
     
-    [self deinitJWPlayer];
+//    [self deinitJWPlayer];
 }
 
 - (void)deinitJWPlayer
 {
     if (self.player != nil) {
-        [self.btnBack removeFromSuperview];
-        self.btnBack = nil;
+        [self.v removeFromSuperview];
+        self.v = nil;
         [self.player.view removeFromSuperview];
         self.player = nil;
     }
@@ -169,10 +175,25 @@
 - (void)onControlBarVisible:(BOOL)isVisible
 {
     if(isVisible){
+        if(self.player.isInFullscreen)
+        {
+            [self.v setHidden:false];
+        }else{
+            [self.v setHidden:true];
+            [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+        }
+    }else{
+        [self.v setHidden:true];
+    }
+}
+
+- (void)onFullscreen:(BOOL)status
+{
+    if(status){
         [self.v setHidden:false];
     }else{
-        
         [self.v setHidden:true];
+        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
     }
 }
 
