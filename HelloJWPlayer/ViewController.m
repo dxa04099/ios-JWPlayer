@@ -93,32 +93,42 @@
     
     self.btnBack = [UIButton new];
     self.btnBack = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.btnBack setTitle:@" < " forState:UIControlStateNormal];
-    [self.btnBack sizeToFit];
+    UIImage *closeImage = [UIImage imageNamed:@"ic_close_white.png"];
+    [self.btnBack setBackgroundImage:closeImage forState:UIControlStateNormal];
+    
+//    [self.btnBack setTitle:@" X Close " forState:UIControlStateNormal];
+    CGRect buttonFrame = self.btnBack.frame;
+    buttonFrame.size = CGSizeMake(44,44);
+    self.btnBack.frame = buttonFrame;
     self.btnBack.backgroundColor = [UIColor clearColor];
     [self.btnBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.btnBack setTitleColor:[UIColor whiteColor] forState:UIControlStateFocused];
     [self.btnBack addTarget:self
                      action:@selector(fncBackTapped:)
            forControlEvents:UIControlEventTouchUpInside];
-    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 30)];
     
-    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:title];
-    [navbar setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.1]];
+//    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 30) ];
+//    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:title];
+//    [navbar setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.1]];
 //    [navbar setBarTintColor:[UIColor colorWithRed:0.50f
 //                                            green:0.50f
 //                                             blue:0.50f
 //                                            alpha:0.05f]];
-    
-    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(fncBackTapped:)];
-    navItem.leftBarButtonItem = cancelBtn;
+//    
+//    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(fncBackTapped:)];
+//    navItem.leftBarButtonItem = cancelBtn;
     
 //    UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapDone:)];
 //    navItem.rightBarButtonItem = doneBtn;
-//    
-    [navbar setItems:@[navItem]];
+//
+//    [navbar setItems:@[navItem]];
     
-    [self.player.view addSubview:navbar];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 44)];
+    v.backgroundColor = [UIColor blackColor];
+    v.alpha = 0.5;
+    [v  addSubview:self.btnBack];
+    
+    [self.player.view addSubview:v];
     
     
     self.player.delegate = self;
@@ -135,12 +145,10 @@
     [self.player stop];
     [self.player exitFullScreen];
     [self.player.view setHidden:true];
-    [self.player.view removeFromSuperview];
-    self.player = nil;
     [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
     
     
-//    [self deinitJWPlayer];
+    [self deinitJWPlayer];
 }
 
 - (void)deinitJWPlayer
