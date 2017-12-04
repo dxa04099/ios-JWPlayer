@@ -100,8 +100,9 @@
     
 //    [self.btnBack setTitle:@" X Close " forState:UIControlStateNormal];
     CGRect buttonFrame = self.btnBack.frame;
-    buttonFrame.size = CGSizeMake(44,44);
+    buttonFrame.size = CGSizeMake(45 ,45);
     self.btnBack.frame = buttonFrame;
+    [self.btnBack.layer setFrame:CGRectMake(20, 0, 45, 45)];
     self.btnBack.backgroundColor = [UIColor clearColor];
     [self.btnBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.btnBack setTitleColor:[UIColor whiteColor] forState:UIControlStateFocused];
@@ -128,7 +129,8 @@
     self.v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 44)];
     self.v.backgroundColor = [UIColor blackColor];
     self.v.alpha = 0.5;
-    [self.v  addSubview:self.btnBack];
+    
+    [self.v addSubview:self.btnBack];
     
     [self.player.view addSubview:self.v];
     
@@ -136,8 +138,7 @@
     self.player.delegate = self;
     
     
-    
-    //    self.player.openSafariOnAdClick = YES;
+//    self.player.openSafariOnAdClick = YES;
     self.player.forceFullScreenOnLandscape = YES;
     self.player.forceLandscapeOnFullScreen = YES;
     self.player.enterFullScreen;
