@@ -10,5 +10,6 @@
 
 @interface JWPLayerViewController : ViewController
 
+@property (strong, nonatomic) NSString *streamUrl;
 
 @end
