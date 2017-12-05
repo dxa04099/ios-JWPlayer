@@ -20,25 +20,12 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y39-Sd-KRx">
-                                <rect key="frame" x="139" y="318" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ViewJWPlayer"/>
-                                <connections>
-                                    <action selector="viewJWPlayerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LKo-u7-you"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <connections>
-                        <outlet property="ViewJWPLayer" destination="y39-Sd-KRx" id="38w-9e-2FA"/>
-                        <outlet property="playJWPlayer" destination="y39-Sd-KRx" id="6Bn-R6-LDz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1089" y="1"/>
         </scene>
         <!--Layer View Controller-->
         <scene sceneID="Lxz-wo-Zct">

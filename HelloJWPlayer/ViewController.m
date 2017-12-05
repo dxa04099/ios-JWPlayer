@@ -110,37 +110,20 @@
                      action:@selector(fncBackTapped:)
            forControlEvents:UIControlEventTouchUpInside];
     
-//    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 30) ];
-//    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:title];
-//    [navbar setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.1]];
-//    [navbar setBarTintColor:[UIColor colorWithRed:0.50f
-//                                            green:0.50f
-//                                             blue:0.50f
-//                                            alpha:0.05f]];
-//    
-//    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(fncBackTapped:)];
-//    navItem.leftBarButtonItem = cancelBtn;
-    
-//    UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapDone:)];
-//    navItem.rightBarButtonItem = doneBtn;
-//
-//    [navbar setItems:@[navItem]];
-    
     self.v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 44)];
     self.v.backgroundColor = [UIColor blackColor];
     self.v.alpha = 0.5;
     
     [self.v addSubview:self.btnBack];
-    [self.v setHidden:true];
     [self.player.view addSubview:self.v];
     
     
     self.player.delegate = self;
     
     CGRect frame = self.view.bounds;
-    frame.origin.y = 64;
-    frame.size.height /= 2;
-    frame.size.height -= 44 + 64;
+//    frame.origin.y = 64;
+//    frame.size.height /= 2;
+//    frame.size.height -= 44 + 64;
     self.player.view.frame = frame;
     self.player.view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
     
@@ -153,13 +136,13 @@
 
 -(void) fncBackTapped:(UIButton*)sender
 {
-//    [self.player stop];
+    [self.player stop];
     [self.player exitFullScreen];
-//    [self.player.view setHidden:true];
+    [self.player.view setHidden:true];
     [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
     
     
-//    [self deinitJWPlayer];
+    [self deinitJWPlayer];
 }
 
 - (void)deinitJWPlayer
@@ -175,13 +158,14 @@
 - (void)onControlBarVisible:(BOOL)isVisible
 {
     if(isVisible){
-        if(self.player.isInFullscreen)
-        {
-            [self.v setHidden:false];
-        }else{
-            [self.v setHidden:true];
-            [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
-        }
+        [self.v setHidden:false];
+//        if(self.player.isInFullscreen)
+//        {
+//            [self.v setHidden:false];
+//        }else{
+//            [self.v setHidden:true];
+//            [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+//        }
     }else{
         [self.v setHidden:true];
     }
